@@ -62,40 +62,35 @@ public class XMLService {
 
 									NodeList weatherDetailsNodes = currentLocationNode.getChildNodes();
 
-									for (int j = 0; j < weatherDetailsNodes.getLength(); j++) {
-
+									for (int j = 0; j < weatherDetailsNodes.getLength(); j++)
 										if (weatherDetailsNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
 
 											Node currentDetailsNode = weatherDetailsNodes.item(j);
 
 											Element currentDetailsElement = (Element) currentDetailsNode;
 
-											if (currentDetailsNode.getNodeName().equals("temperature")) {
+											if (currentDetailsNode.getNodeName().equals("temperature"))
 												weatherDetals.setTemperature(Double
 														.parseDouble(currentDetailsElement.getAttribute("value")));
-											} else if (currentDetailsNode.getNodeName().equals("humidity")) {
+											else if (currentDetailsNode.getNodeName().equals("humidity"))
 												weatherDetals.setHumidity(Double
 														.parseDouble(currentDetailsElement.getAttribute("value")));
-											} else if (currentDetailsNode.getNodeName().equals("fog")) {
+											else if (currentDetailsNode.getNodeName().equals("fog"))
 												weatherDetals.setFog(Double
 														.parseDouble(currentDetailsElement.getAttribute("percent")));
-											} else if (currentDetailsNode.getNodeName().equals("lowClouds")) {
+											else if (currentDetailsNode.getNodeName().equals("lowClouds"))
 												weatherDetals.setLowClouds(Double
 														.parseDouble(currentDetailsElement.getAttribute("percent")));
-											} else if (currentDetailsNode.getNodeName().equals("mediumClouds")) {
+											else if (currentDetailsNode.getNodeName().equals("mediumClouds"))
 												weatherDetals.setMediumClouds(Double
 														.parseDouble(currentDetailsElement.getAttribute("percent")));
-											} else if (currentDetailsNode.getNodeName().equals("highClouds")) {
+											else if (currentDetailsNode.getNodeName().equals("highClouds"))
 												weatherDetals.setHighClouds(Double
 														.parseDouble(currentDetailsElement.getAttribute("percent")));
-											} else if (currentDetailsNode.getNodeName().equals("dewpointTemperature")) {
+											else if (currentDetailsNode.getNodeName().equals("dewpointTemperature"))
 												weatherDetals.setDewpointTemperature(Double
 														.parseDouble(currentDetailsElement.getAttribute("value")));
-											}
-
 										}
-
-									}
 
 								}
 							}
