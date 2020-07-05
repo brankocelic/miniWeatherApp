@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Index</title>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<div class="loader-wrapper">
+		<span class="loader"><span class="loader-inner"></span></span>
+	</div>
+
+	<div class="header">
+		<div class="search">
+			<input type="text" name="search" value="" id="search"
+				placeholder="Search Geolocation or Adress">
+			<button type="submit" onClick="getCity()" id="submit_button">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="container_departure">
+			<input type="text" id="input_field_departure"
+				th:value="${currentCity}" disabled>
+			<div class="weather_details">
+				<p>Departure Weather</p>
+				<p>
+					Dew Point: <span
+						th:text="${weatherDetailsDepartureLocation.dewpointTemperature}"></span>&deg;
+				</p>
+				<p>
+					Humidity: <span
+						th:text="${weatherDetailsDepartureLocation.humidity}"></span>&percnt;
+				</p>
+				<p>
+					Temperature: <span
+						th:text="${weatherDetailsDepartureLocation.temperature}"></span>&deg;
+				</p>
+			</div>
+
+			<table>
+				<tr id="upper_side">
+					<td>
+						<p th:text="${weatherDetailsDepartureLocation.fog}+'%'"
+							id="fog_departure"></p>
+						<p>Fog</p>
+					</td>
+					<td>
+						<p th:text="${weatherDetailsDepartureLocation.lowClouds}+'%'"
+							id="low_clouds_departure"></p>
+						<p>Low Clouds</p>
+					</td>
+					<td>
+						<p th:text="${weatherDetailsDepartureLocation.mediumClouds}+'%'"
+							id="medium_cluds_departure"></p>
+						<p>Medium Clouds</p>
+					</td>
+					<td>
+						<p th:text="${weatherDetailsDepartureLocation.highClouds}+'%'"
+							id="high_clouds_departure"></p>
+						<p>High Clouds</p>
+					</td>
+				</tr>
+
+				<tr id="lower_side">
+					<td><img id="fog_departure_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/mostly_sunny_light_color_96dp.png"
+						alt=""></td>
+					<td style="vertical-align: bottom;"><img
+						id="low_clouds_departure_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/cloudy_light_color_96dp.png"
+						alt=""></td>
+					<td style="vertical-align: bottom;"><img
+						id="medium_cluds_departure_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/cloudy_light_color_96dp.png"
+						alt=""></td>
+					<td><img id="high_clouds_departure_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/cloudy_light_color_96dp.png"
+						alt=""></td>
+				</tr>
+			</table>
+
+		</div>
+
+		<div class="container_destination">
+			<input type="text" id="input_field_destination"
+				th:value="${search_destination}" disabled>
+			<div class="weather_details">
+				<p>Departure Weather</p>
+				<p>
+					Dew Point: <span
+						th:text="${weatherDetailsDestinationLocation.dewpointTemperature}"></span>&deg;
+				</p>
+				<p>
+					Humidity: <span
+						th:text="${weatherDetailsDestinationLocation.humidity}"></span>&percnt;
+				</p>
+				<p>
+					Temperature: <span
+						th:text="${weatherDetailsDestinationLocation.temperature}"></span>&deg;
+				</p>
+			</div>
+
+			<table>
+				<tr id="upper_side">
+					<td>
+						<p th:text="${weatherDetailsDestinationLocation.fog}+'%'"
+							id="fog_destination"></p>
+						<p>Fog</p>
+					</td>
+					<td>
+						<p th:text="${weatherDetailsDestinationLocation.lowClouds}+'%'"
+							id="low_clouds_destination"></p>
+						<p>Low Clouds</p>
+					</td>
+					<td>
+						<p th:text="${weatherDetailsDestinationLocation.mediumClouds}+'%'"
+							id="medium_clouds_destination"></p>
+						<p>Medium Clouds</p>
+					</td>
+					<td>
+						<p th:text="${weatherDetailsDestinationLocation.highClouds}+'%'"
+							id="high_clouds_destination"></p>
+						<p>High Clouds</p>
+					</td>
+				</tr>
+
+				<tr id="lower_side">
+					<td><img id="fog_destination_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/mostly_sunny_light_color_96dp.png"
+						alt=""></td>
+					<td style="vertical-align: bottom;"><img
+						id="low_clouds_destination_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/cloudy_light_color_96dp.png"
+						alt=""></td>
+					<td style="vertical-align: bottom;"><img
+						id="medium_cluds_destination_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/cloudy_light_color_96dp.png"
+						alt=""></td>
+					<td><img id="high_clouds_destination_img"
+						src="http://www.gstatic.com/images/icons/material/apps/weather/2x/cloudy_light_color_96dp.png"
+						alt=""></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<script src="js/simpleJs.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEwtySdv6GucW7tTMjlU4DMNcmYC8M0hc&libraries=places
+	&callback=activatePlacesSearch"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script>
+	$(window).on("load",function(){
+	    $(".loader-wrapper").fadeOut(2500);
+	  });
+	</script>	
+
+</body>
+</html>
