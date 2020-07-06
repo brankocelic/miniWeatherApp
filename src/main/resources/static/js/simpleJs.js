@@ -40,53 +40,30 @@ function activatePlacesSearch() {
 }
 
 function checkPositionOfImagesDeparture() {
-	var low_clouds_departure = document.getElementById("low_clouds_departure").textContent;
-	var low_clouds_departure_img = document.getElementById("low_clouds_departure_img");
 	
-	if (Math.floor(low_clouds_departure.substring(0,low_clouds_departure.length - 1)) > 20 && Math.floor(low_clouds_departure.substring(0,low_clouds_departure.length - 1)) < 50)
-		low_clouds_departure_img.style.opacity = "0.6";
-	else if (Math.floor(low_clouds_departure.substring(0,low_clouds_departure.length - 1)) >= 50)
-		low_clouds_departure_img.style.opacity = "1";
-
-	var medium_cluds_departure = document.getElementById("medium_cluds_departure").textContent;
-	var medium_cluds_departure_img = document.getElementById("medium_cluds_departure_img");
+	manipulateImage("low_clouds_departure" , "low_clouds_departure_img");
+	manipulateImage("medium_cluds_departure" , "medium_cluds_departure_img");
+	manipulateImage("high_clouds_departure" , "high_clouds_departure_img");
 	
-	if (Math.floor(medium_cluds_departure.substring(0,medium_cluds_departure.length - 1)) > 20 && Math.floor(medium_cluds_departure.substring(0,medium_cluds_departure.length - 1)) < 50)
-		medium_cluds_departure_img.style.opacity = "0.6";
-	else if (Math.floor(medium_cluds_departure.substring(0,medium_cluds_departure.length - 1)) >= 50)
-		medium_cluds_departure_img.style.opacity = "1";
-
-	var high_clouds_departure = document.getElementById("high_clouds_departure").textContent;
-	var high_clouds_departure_img = document.getElementById("high_clouds_departure_img");
-	if (Math.floor(high_clouds_departure.substring(0,high_clouds_departure.length - 1)) > 20 && Math.floor(high_clouds_departure.substring(0,high_clouds_departure.length - 1)) < 50)
-		high_clouds_departure_img.style.opacity = "0.6";
-	else if (Math.floor(high_clouds_departure.substring(0,high_clouds_departure.length - 1)) >= 50)
-		high_clouds_departure_img.style.opacity = "1";
 }
 
 function checkPositionOfImagesDestination() {
-	var low_clouds_destination = document.getElementById("low_clouds_destination").textContent;
-	var low_clouds_destination_img = document.getElementById("low_clouds_destination_img");
 	
-	if (Math.floor(low_clouds_destination.substring(0,low_clouds_destination.length - 1)) > 20 && Math.floor(low_clouds_destination.substring(0,low_clouds_destination.length - 1)) < 50)
-		low_clouds_destination_img.style.opacity = "0.6";
-	else if (Math.floor(low_clouds_destination.substring(0,low_clouds_destination.length - 1)) >= 50)
-		low_clouds_destination_img.style.opacity = "1";
+	manipulateImage("low_clouds_destination" , "low_clouds_destination_img");
+	manipulateImage("medium_clouds_destination" , "medium_cluds_destination_img");
+	manipulateImage("high_clouds_destination" , "high_clouds_destination_img");
 
-	var medium_cluds_destination = document.getElementById("medium_clouds_destination").textContent;
-	var medium_cluds_destination_img = document.getElementById("medium_cluds_destination_img");
-	if (Math.floor(medium_cluds_destination.substring(0,medium_cluds_destination.length - 1)) > 20 && Math.floor(medium_cluds_destination.substring(0,medium_cluds_destination.length - 1)) < 50)
-		medium_cluds_destination_img.style.opacity = "0.6";
-	else if (Math.floor(medium_cluds_destination.substring(0,medium_cluds_destination.length - 1)) >= 50)
-		medium_cluds_destination_img.style.opacity = "1";
+}
 
-	var high_clouds_destination = document.getElementById("high_clouds_destination").textContent;
-	var high_clouds_destination_img = document.getElementById("high_clouds_destination_img");
+function manipulateImage(pecrentValue , idImage)
+{
+	var cloudPercent = document.getElementById(pecrentValue).textContent;
+	var coudImage = document.getElementById(idImage);
 	
-	if (Math.floor(high_clouds_destination.substring(0,high_clouds_destination.length - 1)) > 20 && Math.floor(high_clouds_destination.substring(0,high_clouds_destination.length - 1)) < 50)
-		high_clouds_destination_img.style.opacity = "0.6";
-	else if (Math.floor(high_clouds_destination.substring(0,high_clouds_destination.length - 1)) >= 50)
-		high_clouds_destination_img.style.opacity = "1";
+	if (Math.floor(cloudPercent.substring(0,cloudPercent.length - 1)) > 20 && Math.floor(cloudPercent.substring(0,cloudPercent.length - 1)) < 50)
+		coudImage.style.opacity = "0.6";
+	else if (Math.floor(cloudPercent.substring(0,cloudPercent.length - 1)) >= 50)
+		coudImage.style.opacity = "1";
 }
 
 function checkingCorrectSearch(){
